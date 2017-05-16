@@ -1,2 +1,0 @@
-class JwtControllerController < ApplicationController
-end
