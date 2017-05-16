@@ -1,5 +1,5 @@
 module Api
-  class AuthController < ApplicationController
+  class AuthController < BaseController
     skip_before_action :authenticate!
 
     def create
