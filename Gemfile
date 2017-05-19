@@ -33,6 +33,9 @@ gem 'devise', '~> 4.3.0'
 # For API authentication
 gem 'jwt'
 
+# Setup cors for Vue App
+gem 'rack-cors', :require => 'rack/cors'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
