@@ -2,11 +2,10 @@ module Api
   class BaseController < ActionController::Base
     before_action :authenticate!
     def authenticate!
-
     end
 
-    def not_authorized
-      render json: {msg: 'You are not authorized'}, status: :not_authorized
+    def unauthorized
+      render json: { msg: 'You are not authorized' }, status: :unauthorized
     end
 
     def current_user
