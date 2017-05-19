@@ -108,6 +108,7 @@ GEM
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.3)
+    rack-cors (0.4.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.1)
@@ -217,6 +218,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.1)
   redis (~> 3.0)
   rspec-rails (~> 3.5)
