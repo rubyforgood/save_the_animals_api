@@ -1,24 +1,14 @@
-# README
+# Save the Animals
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A backend for an offline data collection application for various species that need to be observed.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+`git clone https://github.com/rubyforgood/save_the_animals_api`
 
-* System dependencies
+Bundle, create db, migrate and seed a db.
+`bin/setup`
 
-* Configuration
+### Pulling down new code
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`bin/upgrade`
