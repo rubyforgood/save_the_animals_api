@@ -7,7 +7,7 @@ module Api
       if user
         render json: { jwt_token: user.token }
       else
-        not_authorized
+        unauthorized
       end
     end
   end
