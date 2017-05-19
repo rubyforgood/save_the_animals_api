@@ -1,0 +1,8 @@
+Metrics/LineLength:
+  Enabled: false
+Style/CommentAnnotation:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false

@@ -12,25 +12,19 @@ class User < ApplicationRecord
   end
 
   def self.authenticate_jwt(jwt)
-    decoded_token = JWT.decode jwt, Rails.application.secrets.secret_key_base, true, { :algorithm => 'HS256' }
+    decoded_token = JWT.decode jwt, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256'
     find_by(id: decoded_token['id'])
   end
 
   def self.authenticate(email, password)
     user = User.find_by(email: email)
-    if user && user.valid_password?(password)
-      user
-    end
+    user if user && user.valid_password?(password)
   end
 
-  private
-
-  def jwt_token_payload
+  private def jwt_token_payload
     @_jwt_token_payload ||= {
       id: id,
       email: email
     }
   end
-
-
 end

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   namespace :api do
     post :auth, controller: :auth, action: :create
   end
-  root to: "home#index"
+
+  root to: 'home#index'
 end
