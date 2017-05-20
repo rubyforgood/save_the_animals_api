@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :ethograms, only: :index
+    resources :observation_sessions, only: :create
     post :auth, controller: :auth, action: :create
   end
 

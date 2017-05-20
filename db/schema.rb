@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519211251) do
+ActiveRecord::Schema.define(version: 20170519231801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
   create_table "ethogram_structures", force: :cascade do |t|
     t.bigint "ethogram_id"
@@ -25,6 +26,21 @@ ActiveRecord::Schema.define(version: 20170519211251) do
 
   create_table "ethograms", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "observation_sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "longitude"
+    t.decimal "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "observations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "observation_session_id"
+    t.jsonb "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -21,5 +21,9 @@ module SaveTheAnimalsApi
         resource '*', headers: :any, methods: :any
       end
     end
+
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
