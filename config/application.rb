@@ -17,7 +17,7 @@ module SaveTheAnimalsApi
 
     config.middleware.insert_before Warden::Manager, Rack::Cors do
       allow do
-        origins 'localhost:*', 'save-the-animals.herokuapp.com'
+        origins 'localhost:8080', 'save-the-animals.herokuapp.com'
         resource '*', headers: :any, methods: :any
       end
     end
