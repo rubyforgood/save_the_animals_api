@@ -1,35 +1,37 @@
 module Api
-  class Api::ObservationSessionsController < BaseController
+  class ObservationSessionsController < BaseController
     def create
-      observation_session = ObservationSession.find_or_initialize_by(
-        id: session_uuid,
-        user_id: current_user.id,
-      )
-      params.fetch('observation_session')&.fetch('observations').each do |observation|
-        if observation_session.id == observation['observation_session_id']
-          # TODO Verify the Observation UUID does not exist yet
-          observation_session.observations.new(
-            details: observation
-          )
-        else
-          # TODO This Observation has a different parent (ObservationSession) uuid. How should this be handled?
+      ActiveRecord::Base.transaction do
+        create_observation_sessions
+        # TODO: upsert?
+        observations = observations_params.map do |observation|
+          Observation.find_or_create_by(id: observation['id']) do |record|
+            record.details = observation
+            record.observation_session_id = observation['observation_session_id']
+          end
         end
-      end
 
-      if observation_session.save
-        result = { status: :ok, count: observation_session.observations.count }
-        status = 201
-      else
-        result = { status: :error, errors: observation_session.errors.messages }
-        status = 422
+        response = observations.map { |o| { id: o.id, persisted: o.persisted?, errors: o.errors.full_messages } }
+        render json: response, status: :ok
       end
-      render json: result, status: status
+    rescue ActiveRecord::StatementInvalid => e
+      render json: { msg: e.message }, status: 422
     end
 
     private
 
-    def session_uuid
-      params.fetch('observation_session')&.fetch('observations')&.first&.fetch('observation_session_id',nil)
+    def create_observation_sessions
+      observations_params
+        .map { |o| o['observation_session_id'] }
+        .uniq
+        .map { |id| { id: id, user_id: current_user.id } }
+        .map do |attrs|
+        ObservationSession.create_once(attrs)
+      end
+    end
+
+    def observations_params
+      params.fetch('observations', [])
     end
   end
 end

@@ -6,8 +6,6 @@ RSpec.describe ObservationSession, type: :model do
       os1 = ObservationSession.new
       os1.observations << Observation.new
       expect(os1.valid?).to eq(true)
-      os2 = ObservationSession.new
-      expect(os2.valid?).to eq(false)
     end
   end
 end
