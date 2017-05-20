@@ -10,11 +10,12 @@
 
   <body>
     <main class="container">
-      <h1>Save the Animals</h1>
-
-
       <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
         <ul class="navbar-nav mr-auto">
+          <%= link_to "Save the Animals", root_url, class: "navbar-brand" %>
+
+          <li class="nav-item"><%= link_to "Manage Ethograms", ethograms_path, class: 'nav-link'%></li>
+
           <% if current_user %>
             <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
           <% else %>
@@ -24,10 +25,11 @@
         </ul>
       </nav>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= flash_messages %>
 
-      <%= yield %>
+      <div class="content">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
