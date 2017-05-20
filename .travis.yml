@@ -5,3 +5,5 @@ rvm:
 before_script: bin/setup
 script: bin/rspec
 bundler_args: --without production
+addons:
+  postgresql: "9.6"
