@@ -2,7 +2,7 @@ module Api
   class Api::ObservationSessionsController < BaseController
     def create
       observation_session = ObservationSession.find_or_initialize_by(
-        id: get_session_uuid(params),
+        id: session_uuid,
         user_id: current_user.id,
       )
       params.fetch('observation_session')&.fetch('observations').each do |observation|
@@ -28,8 +28,8 @@ module Api
 
     private
 
-    def get_session_uuid(input)
-      input.fetch('observation_session')&.fetch('observations')&.first&.fetch('observation_session_id',nil)
+    def session_uuid
+      params.fetch('observation_session')&.fetch('observations')&.first&.fetch('observation_session_id',nil)
     end
   end
 end
