@@ -9,7 +9,7 @@ class Ethogram < ApplicationRecord
   delegate :structure, to: :current_ethogram_structure, allow_nil: true
 
   def structure_id
-    current_ethogram_structure.id
+    current_ethogram_structure&.id
   end
 
   def structure=(form)
