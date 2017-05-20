@@ -1,0 +1,27 @@
+<%= form_with(model: ethogram, local: true) do |form| %>
+  <% if ethogram.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ethogram.errors.count, "error") %> prohibited this ethogram from being saved:</h2>
+
+      <ul>
+      <% ethogram.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ethogram_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :structure %>
+    <%= form.text_area :structure, id: :ethogram, value: (JSON.pretty_generate(ethogram.structure) if ethogram.structure )%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

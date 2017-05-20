@@ -23,8 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
 
@@ -45,10 +44,12 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
+  gem 'pry-rails'
 end
 
 group :development do
-  gem 'pry-rails'
+
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
