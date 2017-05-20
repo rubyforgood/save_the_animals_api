@@ -1,0 +1,7 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.4.1
+before_script: bin/setup
+script: bin/rspec
+bundler_args: --without production
