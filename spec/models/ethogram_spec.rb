@@ -34,4 +34,10 @@ RSpec.describe Ethogram, type: :model do
       expect(ethogram.structure.fetch('subjects')).to include 'Miles'
     end
   end
+
+  describe '#subjects' do
+    it 'gives the most recent subjects' do
+      expect(ethogram.subjects).to include 'Miles'
+    end
+  end
 end
