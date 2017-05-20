@@ -1,12 +1,29 @@
 module Api
   class Api::ObservationSessionsController < BaseController
     def create
-      observation_session = ObservationSession.new(
+      observation_session = ObservationSession.find_or_initialize_by(
+        id: params.fetch('observation_session')&.fetch('observations')&.first&.fetch('observation_session_id',nil),
         user_id: current_user.id,
-        observations: params.fetch('observation_session', {}).fetch('observations', nil)
       )
-      observation_session.id = observation_session.observations.first['observation_session_id']
-      render json: { count: observation_session.observations.count }
+      params.fetch('observation_session')&.fetch('observations').each do |observation|
+        if observation_session.id == observation['observation_session_id']
+          # TODO Verify the Observation UUID does not exist yet
+          observation_session.observations.new(
+            details: observation
+          )
+        else
+          # TODO This Observation has a different parent (ObservationSession) uuid. How should this be handled?
+        end
+      end
+
+      if observation_session.save
+        result = { status: :ok, count: observation_session.observations.count }
+        status = 201
+      else
+        result = { status: :error, errors: observation_session.errors.messages }
+        status = 422
+      end
+      render json: result, status: status
     end
   end
 end
