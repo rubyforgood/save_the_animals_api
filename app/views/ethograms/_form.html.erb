@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :ethogram_name %>
+    <%= form.text_field :name, id: :ethogram_name, class: 'form-control'%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :structure %>
-    <%= form.text_area :structure, id: :ethogram, value: (JSON.pretty_generate(ethogram.structure) if ethogram.structure )%>
+    <%= form.text_area :structure, id: :ethogram, value: (JSON.pretty_generate(ethogram.structure) if ethogram.structure ), class: 'form-control'%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
