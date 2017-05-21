@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521012519) do
+ActiveRecord::Schema.define(version: 20170521141714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
 
-  create_table "ethogram_structures", force: :cascade do |t|
-    t.bigint "ethogram_id"
+  create_table "ethogram_structures", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "ethogram_id"
     t.jsonb "structure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ethogram_id"], name: "index_ethogram_structures_on_ethogram_id"
   end
 
-  create_table "ethograms", force: :cascade do |t|
+  create_table "ethograms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,5 +75,4 @@ ActiveRecord::Schema.define(version: 20170521012519) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
-  add_foreign_key "ethogram_structures", "ethograms"
 end
