@@ -2,10 +2,10 @@ class Observation < ApplicationRecord
   belongs_to :observation_session
 
   comma do
-    id "id"
+    id 'id'
     observation_session_id 'observation_session_id'
-    observation_session :user_id => 'user_id'
-    observation_session 'user_email' do |os| os.user&.email end
+    observation_session user_id: 'user_id'
+    observation_session('user_email') { |os| os.user&.email }
     details('subject') { |d| d['subject'] }
     details('modifier') { |d| d['modifier'] }
     details('behavior') { |d| d['behavior'] }
