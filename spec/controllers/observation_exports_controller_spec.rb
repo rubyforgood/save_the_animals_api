@@ -16,6 +16,7 @@ RSpec.describe ObservationExportsController, type: :controller do
           modifier: 'calmly',
           behavior: 'collects',
           target: 'cephalopods',
+          timestamp: '2017-05-20 12:34:56 UTC',
         },
         created_at: '2017-05-20 12:34:56 UTC',
         updated_at: '2017-05-20 12:34:56 UTC',
@@ -26,7 +27,7 @@ RSpec.describe ObservationExportsController, type: :controller do
 
       expect(assigns(:observations)).to eq(Observation.all)
       header,data = response.body.split(/\n/)
-      expect(header).to eq('id,observation_session_id,user_id,user_email,subject,modifier,behavior,target,uploaded_at')
+      expect(header).to eq('id,observation_session_id,user_id,user_email,subject,modifier,behavior,target,timestamp')
       expect(data).to eq(Observation.first.to_comma.join(','))
       expect(data).to match(/,user@localhost,Carl,calmly,collects,cephalopods,2017-05-20 12:34:56 UTC/)
     end

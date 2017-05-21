@@ -14,6 +14,6 @@ class Observation < ApplicationRecord
     details('modifier') { |d| d['modifier'] }
     details('behavior') { |d| d['behavior'] }
     details('target') { |d| d['target'] }
-    created_at 'uploaded_at'
+    details('timestamp') { |d| d['timestamp'] }
   end
 end
