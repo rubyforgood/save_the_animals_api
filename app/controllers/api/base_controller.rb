@@ -1,6 +1,7 @@
 module Api
   class BaseController < ActionController::Base
     before_action :authenticate!
+
     def authenticate!
       unauthorized unless current_user
     end
@@ -16,6 +17,7 @@ module Api
         @_current_user ||= User.find_by(id: payload.first['id'])
       end
     end
+
     helper_method :current_user
   end
 end

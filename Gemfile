@@ -33,6 +33,8 @@ gem 'redis', '~> 3.0'
 
 # For authentication
 gem 'devise', '~> 4.3.0'
+# To invite new users
+gem 'devise_invitable', '~> 1.7.2'
 
 # For API authentication
 gem 'jwt'
