@@ -33,12 +33,3 @@ input[type="submit"] {
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
   @include transition($btn-transition);
 }
-
-.dashboard {
-  .dashboard-item {
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 3px;
-    text-align: center;
-  }
-}
