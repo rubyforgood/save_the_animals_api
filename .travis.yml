@@ -1,9 +1,13 @@
 language: ruby
 dist: trusty
 cache: bundler
+services:
+  - postgresql
 rvm:
   - 2.4.1
-before_script: bin/setup
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bin/setup
 script: bin/rspec
 bundler_args: --without production
 addons:
