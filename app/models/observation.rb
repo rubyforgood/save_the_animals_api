@@ -2,7 +2,7 @@ class Observation < ApplicationRecord
   belongs_to :observation_session
 
   def self.latest
-    order(id: :desc).first
+    order(created_at: :desc).first
   end
 
   comma do
