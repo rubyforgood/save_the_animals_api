@@ -4,7 +4,7 @@
     <title>SaveTheAnimalsApi</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -12,15 +12,25 @@
     <main class="container">
       <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
         <ul class="navbar-nav mr-auto">
-          <%= link_to "Save the Animals", root_url, class: "navbar-brand" %>
+          <%= link_to 'Save the Animals', root_url, class: 'navbar-brand' %>
 
           <% if current_user %>
-            <li class="nav-item"><%= link_to "Manage Ethograms", ethograms_path, class: 'nav-link'%></li>
-            <li class="nav-item"><%= link_to "Export Observations", export_observations_path(format: :csv), class: 'nav-link'%></li>
-            <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+              <li class="nav-item">
+                <%= link_to 'Manage Ethograms', ethograms_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Export Observations', export_observations_path(format: :csv), class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Invite New User', new_user_invitation_path, method: :get, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
           <% else %>
-            <li class="nav-item"><%= link_to "Log In", new_user_session_path, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %></li>
+              <li class="nav-item">
+                <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
+              </li>
           <% end %>
         </ul>
       </nav>
