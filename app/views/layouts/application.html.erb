@@ -9,11 +9,20 @@
   </head>
 
   <body>
-    <main class="container">
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <ul class="navbar-nav mr-auto">
-          <%= link_to 'Save the Animals', root_url, class: 'navbar-brand' %>
 
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right"
+              type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <%= link_to image_tag('renee-the-panda-small.png'), root_url, class: 'navbar-brand' %>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
           <% if current_user %>
               <li class="nav-item">
                 <%= link_to 'Manage Ethograms', ethograms_path, class: 'nav-link' %>
@@ -33,7 +42,10 @@
               </li>
           <% end %>
         </ul>
-      </nav>
+      </div>
+    </nav>
+
+    <main class="container">
 
       <%= flash_messages %>
 

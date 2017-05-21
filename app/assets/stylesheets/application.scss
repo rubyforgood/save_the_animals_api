@@ -1,1 +1,35 @@
 @import "bootstrap";
+$ruby-green: #57c2be;
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+  margin-bottom: 20px;
+  background-color: $ruby-green;
+
+  .nav-item {
+    a.nav-link {
+      color: white;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: white;
+  }
+
+  img {
+    height: 35px;
+  }
+}
+
+input[type="submit"] {
+  border: 0;
+  background-color: $ruby-green;
+  color: white;
+  box-shadow: none;
+  border-radius: $btn-primary-border;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include transition($btn-transition);
+}
