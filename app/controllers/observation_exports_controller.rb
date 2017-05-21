@@ -1,6 +1,4 @@
 class ObservationExportsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @observations = Observation.all
     respond_to do |format|
