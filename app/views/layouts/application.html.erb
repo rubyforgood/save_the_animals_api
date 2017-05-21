@@ -14,10 +14,9 @@
         <ul class="navbar-nav mr-auto">
           <%= link_to "Save the Animals", root_url, class: "navbar-brand" %>
 
-          <li class="nav-item"><%= link_to "Manage Ethograms", ethograms_path, class: 'nav-link'%></li>
-          <li class="nav-item"><%= link_to "Export Observations", export_observations_path(format: :csv), class: 'nav-link'%></li>
-
           <% if current_user %>
+            <li class="nav-item"><%= link_to "Manage Ethograms", ethograms_path, class: 'nav-link'%></li>
+            <li class="nav-item"><%= link_to "Export Observations", export_observations_path(format: :csv), class: 'nav-link'%></li>
             <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
           <% else %>
             <li class="nav-item"><%= link_to "Log In", new_user_session_path, class: 'nav-link' %></li>

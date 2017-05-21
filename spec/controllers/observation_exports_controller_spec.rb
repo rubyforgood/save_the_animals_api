@@ -8,7 +8,7 @@ RSpec.describe ObservationExportsController, type: :controller do
         email: 'user@localhost',
         password: 'password'
       )
-      os = ObservationSession.create( user: user, id: SecureRandom.uuid )
+      os = ObservationSession.create( user: user )
       os.observations << Observation.create(
         id: SecureRandom.uuid,
         details: {

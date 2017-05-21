@@ -1,12 +1,5 @@
 class ObservationExportsController < ApplicationController
-  before_action :authenticate!
-  def authenticate!
-    unauthorized unless current_user
-  end
-
-  def unauthorized
-    render plain: "You must sign in first.\n", status: :unauthorized
-  end
+  before_action :authenticate_user!
 
   def index
     @observations = Observation.all
