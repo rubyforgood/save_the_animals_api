@@ -3,7 +3,7 @@ dist: trusty
 cache: bundler
 rvm:
   - 2.4.1
-before_script: bin/setup
+before_script: bin/rake db:test:prepare
 script: bin/rspec
 bundler_args: --without production
 addons:
