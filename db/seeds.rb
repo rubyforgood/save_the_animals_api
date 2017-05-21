@@ -77,6 +77,7 @@ os1.observations << Observation.new(
     modifier: "calmly",
     behavior: "collecting",
     target: "cephalopods",
+    timestamp: Time.current,
   }
 )
 os1.observations << Observation.new(
@@ -85,6 +86,7 @@ os1.observations << Observation.new(
     modifier: "boldly",
     behavior: "battling",
     target: "beetles",
+    timestamp: Time.current,
   }
 )
 os1.save
