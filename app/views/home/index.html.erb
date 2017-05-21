@@ -1,0 +1,27 @@
+<div class="dashboard">
+  <div class="row row-eq-height">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title"><%= @num_observations %></h3>
+          <%= @num_observations > 1 ? "observations" : "observation" %> uploaded
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-title">
+            <%- if @latest_observation %>
+              <%= time_ago_in_words(@latest_observation.created_at) %> ago
+            <%- else %>
+              n/a
+            <%- end %>
+          </h3>
+          <p class="card-text">latest observation uploaded</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
