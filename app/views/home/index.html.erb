@@ -1,0 +1,23 @@
+<div class="dashboard">
+  <div class="row row-eq-height">
+    <div class="col-6">
+      <div class="dashboard-item">
+        <h1><%= @num_observations %></h1>
+        <%= @num_observations > 1 ? "observations" : "observation" %> uploaded
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="dashboard-item">
+        <h1>
+          <%- if @latest_observation %>
+            <%= time_ago_in_words(@latest_observation.created_at) %> ago
+          <%- else %>
+            n/a
+          <%- end %>
+        </h1>
+        latest observation uploaded
+      </div>
+    </div>
+  </div>
+</div>

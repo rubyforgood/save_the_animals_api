@@ -1,6 +1,10 @@
 class Observation < ApplicationRecord
   belongs_to :observation_session
 
+  def self.latest
+    order(id: :desc).first
+  end
+
   comma do
     id 'id'
     observation_session_id 'observation_session_id'
