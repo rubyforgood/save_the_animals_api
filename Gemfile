@@ -40,6 +40,8 @@ gem 'jwt'
 # Setup cors for Vue App
 gem 'rack-cors', :require => 'rack/cors'
 
+# CSV exports
+gem "comma", "~> 4.1.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
