@@ -8,6 +8,7 @@ RSpec.describe Api::ObservationSessionsController, type: :controller do
       it 'returns http success for good data' do
         uuid = SecureRandom.uuid
         json_params = {
+          "sent_at": "2017-05-20T01:15:09.728Z",
           "observations": [
             {
               "id": SecureRandom.uuid,
