@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  notices:
+    destroy: "%{model_name} was successfully deleted."
