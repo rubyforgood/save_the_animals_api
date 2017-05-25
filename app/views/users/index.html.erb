@@ -1,0 +1,12 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+    <div class="card col-lg-4 col-md-6">
+      <div class="card-block">
+        <ul class="list-group list-group-flush">
+          <p class="card-text"><span><b>Email: </b></span><%= user.email %></p>
+          <%= link_to 'Destroy', users_path(user.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-outline-danger card-link' %>
+        </ul>
+      </div>
+    </div>
+<% end %>

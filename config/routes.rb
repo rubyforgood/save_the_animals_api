@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+
+  resources :users, only: [:index, :destroy]
 end

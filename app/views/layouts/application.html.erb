@@ -31,7 +31,7 @@
                 <%= link_to 'Export Observations', export_observations_path(format: :csv), class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Invite New User', new_user_invitation_path, method: :get, class: 'nav-link' %>
+                <%= link_to 'Users', users_path, method: :get, class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
