@@ -1,17 +1,23 @@
+# frozen_string_literal: true
+
 module Api
   class ObservationSessionsController < BaseController
     def create
       ActiveRecord::Base.transaction do
-        create_observation_sessions
-        # TODO: upsert?
-        observations = observations_params.map do |observation|
+        session_ids_to_instances = {}
+
+        processed_observations = observations_params.map do |observation|
+          session = session_ids_to_instances.fetch(observation['observation_session_id']) do |session_id|
+            session_ids_to_instances[session_id] = ObservationSession.find_or_create_by(id: session_id, user_id: current_user.id)
+          end
+
           Observation.find_or_create_by(id: observation['id']) do |record|
             record.details = observation
-            record.observation_session_id = observation['observation_session_id']
+            record.observation_session = session
           end
         end
 
-        response = observations.map { |o| { id: o.id, persisted: o.persisted?, errors: o.errors.full_messages } }
+        response = processed_observations.map { |o| { id: o.id, persisted: o.persisted?, errors: o.errors.full_messages } }
         render json: response, status: :ok
       end
     rescue ActiveRecord::StatementInvalid => e
@@ -19,16 +25,6 @@ module Api
     end
 
     private
-
-    def create_observation_sessions
-      observations_params
-        .map { |o| o['observation_session_id'] }
-        .uniq
-        .map { |id| { id: id, user_id: current_user.id } }
-        .map do |attrs|
-        ObservationSession.create_once(attrs)
-      end
-    end
 
     def observations_params
       params.fetch('observations', [])

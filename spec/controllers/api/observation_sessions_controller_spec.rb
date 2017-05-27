@@ -25,8 +25,40 @@ RSpec.describe Api::ObservationSessionsController, type: :controller do
               "subject": "Minerva",
               "behavior": "fighting",
               "target": "Lulu"
+            },
+            {
+              "id": SecureRandom.uuid,
+              "observation_session_id": uuid,
+              "timestamp": "2017-05-19T01:15:09.728Z",
+              "subject": "Minerva",
+              "behavior": "walking",
+              "modifier": "quickly"
+            },
+            {
+              "id": SecureRandom.uuid,
+              "observation_session_id": uuid,
+              "timestamp": "2017-05-19T01:15:09.728Z",
+              "subject": "Minerva",
+              "behavior": "fighting",
+              "target": "Lulu"
+            },
+            {
+              "id": SecureRandom.uuid,
+              "observation_session_id": uuid,
+              "timestamp": "2017-05-19T01:15:09.728Z",
+              "subject": "Minerva",
+              "behavior": "walking",
+              "modifier": "quickly"
+            },
+            {
+              "id": SecureRandom.uuid,
+              "observation_session_id": uuid,
+              "timestamp": "2017-05-19T01:15:09.728Z",
+              "subject": "Minerva",
+              "behavior": "fighting",
+              "target": "Lulu"
             }
-          ]
+          ] 
         }
         post :create, params: json_params, as: :json
         expect(response).to have_http_status(:success)
